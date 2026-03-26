@@ -1,0 +1,28 @@
+aid: confluent-schema-registry
+name: Confluent Schema Registry
+description: >-
+  Confluent Schema Registry provides a serving layer for metadata and a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Microservices
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/confluent-schema-registry/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: confluent-schema-registry:confluent-schema-registry
+    name: Confluent Schema Registry
+    description: >-
+      Confluent Schema Registry provides a serving layer for metadata and a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas.
+    humanURL: https://github.com/api-evangelist/confluent-schema-registry
+    tags:
+      - Microservices
+    properties: []
+common:
+  - type: Website
+    url: https://github.com/api-evangelist/confluent-schema-registry
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
