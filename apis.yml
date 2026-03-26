@@ -21,22 +21,26 @@ created: '2026-03-26'
 modified: '2026-03-26'
 specificationVersion: '0.19'
 apis:
-  - aid: confluent-schema-registry:confluent-schema-registry
-    name: Confluent Schema Registry
+  - aid: confluent-schema-registry:schema-registry-rest-api
+    name: Confluent Schema Registry REST API
     description: >-
-      Confluent Schema Registry provides a serving layer for metadata and
-      a RESTful interface for storing and retrieving Avro, JSON Schema, and
-      Protobuf schemas, ensuring data compatibility and enabling schema
-      evolution in Apache Kafka ecosystems.
-    humanURL: https://docs.confluent.io/platform/current/schema-registry/
+      RESTful API for managing schemas, subjects, versions, and compatibility
+      settings. Supports Avro, JSON Schema, and Protobuf schema types with
+      configurable compatibility levels and schema references.
+    humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+    baseURL: http://localhost:8081
     tags:
       - Schema Registry
-      - Apache Kafka
-      - Avro
-      - Protobuf
-      - JSON Schema
-      - Data Governance
-    properties: []
+      - REST API
+      - Schemas
+      - Compatibility
+    properties:
+      - type: Documentation
+        url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+      - type: OpenAPI
+        url: openapi/schema-registry.yml
+      - type: JSONSchema
+        url: json-schema/schema-registry-schema.json
 common:
   - type: Website
     url: https://www.confluent.io/

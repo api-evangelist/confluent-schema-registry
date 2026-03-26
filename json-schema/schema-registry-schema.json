@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/confluent-schema-registry/schema-registry-schema.json",
+  "title": "Confluent Schema Registry Schema",
+  "description": "Schema for a schema object stored in Confluent Schema Registry.",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "The subject the schema is registered under"
+    },
+    "id": {
+      "type": "integer",
+      "description": "Globally unique schema ID"
+    },
+    "version": {
+      "type": "integer",
+      "description": "Version number within the subject"
+    },
+    "schemaType": {
+      "type": "string",
+      "enum": ["AVRO", "JSON", "PROTOBUF"],
+      "default": "AVRO",
+      "description": "The type of schema"
+    },
+    "schema": {
+      "type": "string",
+      "description": "The schema definition as a string"
+    },
+    "references": {
+      "type": "array",
+      "description": "References to other schemas",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Reference name used in the schema"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject of the referenced schema"
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version of the referenced schema"
+          }
+        },
+        "required": ["name", "subject", "version"]
+      }
+    },
+    "compatibilityLevel": {
+      "type": "string",
+      "enum": [
+        "BACKWARD",
+        "BACKWARD_TRANSITIVE",
+        "FORWARD",
+        "FORWARD_TRANSITIVE",
+        "FULL",
+        "FULL_TRANSITIVE",
+        "NONE"
+      ],
+      "description": "Compatibility level for this subject"
+    }
+  },
+  "required": ["schema"]
+}
