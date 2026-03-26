@@ -1,11 +1,20 @@
 aid: confluent-schema-registry
 name: Confluent Schema Registry
 description: >-
-  Confluent Schema Registry provides a serving layer for metadata and a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas.
+  Confluent Schema Registry provides a serving layer for metadata,
+  offering a RESTful interface for storing and retrieving Avro, JSON
+  Schema, and Protobuf schemas, enabling schema evolution and
+  compatibility management for Apache Kafka-based streaming data
+  pipelines.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Microservices
+  - Schema Registry
+  - Apache Kafka
+  - Avro
+  - Protobuf
+  - JSON Schema
+  - Data Governance
 url: >-
   https://raw.githubusercontent.com/api-evangelist/confluent-schema-registry/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -15,14 +24,32 @@ apis:
   - aid: confluent-schema-registry:confluent-schema-registry
     name: Confluent Schema Registry
     description: >-
-      Confluent Schema Registry provides a serving layer for metadata and a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas.
-    humanURL: https://github.com/api-evangelist/confluent-schema-registry
+      Confluent Schema Registry provides a serving layer for metadata and
+      a RESTful interface for storing and retrieving Avro, JSON Schema, and
+      Protobuf schemas, ensuring data compatibility and enabling schema
+      evolution in Apache Kafka ecosystems.
+    humanURL: https://docs.confluent.io/platform/current/schema-registry/
     tags:
-      - Microservices
+      - Schema Registry
+      - Apache Kafka
+      - Avro
+      - Protobuf
+      - JSON Schema
+      - Data Governance
     properties: []
 common:
   - type: Website
-    url: https://github.com/api-evangelist/confluent-schema-registry
+    url: https://www.confluent.io/
+  - type: Documentation
+    url: https://docs.confluent.io/platform/current/schema-registry/
+  - type: Getting Started
+    url: https://docs.confluent.io/platform/current/schema-registry/develop/using.html
+  - type: GitHub
+    url: https://github.com/confluentinc/schema-registry
+  - type: Blog
+    url: https://www.confluent.io/blog/
+  - type: Pricing
+    url: https://www.confluent.io/pricing/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
