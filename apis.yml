@@ -9,12 +9,12 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Schema Registry
   - Apache Kafka
   - Avro
-  - Protobuf
-  - JSON Schema
   - Data Governance
+  - JSON Schema
+  - Protobuf
+  - Schema Registry
 url: >-
   https://raw.githubusercontent.com/api-evangelist/confluent-schema-registry/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -30,10 +30,10 @@ apis:
     humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
     baseURL: http://localhost:8081
     tags:
-      - Schema Registry
-      - REST API
-      - Schemas
       - Compatibility
+      - REST API
+      - Schema Registry
+      - Schemas
     properties:
       - type: Documentation
         url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
