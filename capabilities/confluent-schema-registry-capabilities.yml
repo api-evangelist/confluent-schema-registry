@@ -1,0 +1,187 @@
+# Naftiko capabilities profile for Confluent Schema Registry.
+# Capabilities map verbs against the high-value operations exposed by the
+# Schema Registry REST API. Each capability links back to the canonical
+# OpenAPI definition in this repo.
+provider: confluent-schema-registry
+name: Confluent Schema Registry
+description: >-
+  Confluent Schema Registry exposes a RESTful interface for storing and
+  retrieving Avro, JSON Schema, and Protobuf schemas. These capabilities
+  cover schema registration and lookup, version management, compatibility
+  testing, and configuration of subject- and cluster-level rules.
+capabilities:
+  - id: schema-registry.subjects.list
+    name: List subjects
+    description: List all subjects in the registry, optionally filtered by prefix.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1subjects/get
+    inputs:
+      - subjectPrefix
+      - deleted
+    outputs:
+      - subjects
+
+  - id: schema-registry.subjects.versions.list
+    name: List versions for subject
+    description: List version numbers registered under a given subject.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1subjects~1{subject}~1versions/get
+    inputs:
+      - subject
+      - deleted
+    outputs:
+      - versions
+
+  - id: schema-registry.schemas.register
+    name: Register schema
+    description: Register a new Avro, JSON Schema, or Protobuf schema under a subject.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1subjects~1{subject}~1versions/post
+    inputs:
+      - subject
+      - schema
+      - schemaType
+      - references
+      - normalize
+    outputs:
+      - id
+
+  - id: schema-registry.schemas.get-by-version
+    name: Get schema by version
+    description: Retrieve a schema and its metadata by subject and version number.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1subjects~1{subject}~1versions~1{version}/get
+    inputs:
+      - subject
+      - version
+      - deleted
+    outputs:
+      - subject
+      - version
+      - id
+      - schemaType
+      - schema
+      - references
+
+  - id: schema-registry.schemas.get-by-id
+    name: Get schema by global ID
+    description: Retrieve a registered schema by its global ID.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1schemas~1ids~1{id}/get
+    inputs:
+      - id
+    outputs:
+      - schema
+      - schemaType
+      - references
+
+  - id: schema-registry.schemas.delete-version
+    name: Delete schema version
+    description: Soft- or hard-delete a specific schema version under a subject.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1subjects~1{subject}~1versions~1{version}/delete
+    inputs:
+      - subject
+      - version
+      - permanent
+    outputs:
+      - version
+
+  - id: schema-registry.subjects.delete
+    name: Delete subject
+    description: Soft- or hard-delete a subject and all of its versions.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1subjects~1{subject}/delete
+    inputs:
+      - subject
+      - permanent
+    outputs:
+      - versions
+
+  - id: schema-registry.subjects.lookup
+    name: Look up schema under subject
+    description: Look up a schema under a subject and return the registered version and ID.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1subjects~1{subject}/post
+    inputs:
+      - subject
+      - schema
+      - schemaType
+      - references
+    outputs:
+      - subject
+      - id
+      - version
+      - schema
+
+  - id: schema-registry.compatibility.test
+    name: Test schema compatibility
+    description: Test whether a candidate schema is compatible with a specific version.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1compatibility~1subjects~1{subject}~1versions~1{version}/post
+    inputs:
+      - subject
+      - version
+      - schema
+      - schemaType
+      - references
+    outputs:
+      - is_compatible
+
+  - id: schema-registry.config.get-global
+    name: Get global compatibility config
+    description: Retrieve the cluster-level compatibility level.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1config/get
+    inputs: []
+    outputs:
+      - compatibility
+
+  - id: schema-registry.config.update-global
+    name: Update global compatibility config
+    description: Update the cluster-level compatibility level.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1config/put
+    inputs:
+      - compatibility
+    outputs:
+      - compatibility
+
+  - id: schema-registry.config.get-subject
+    name: Get subject compatibility config
+    description: Retrieve the compatibility level configured for a specific subject.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1config~1{subject}/get
+    inputs:
+      - subject
+    outputs:
+      - compatibility
+
+  - id: schema-registry.config.update-subject
+    name: Update subject compatibility config
+    description: Update the compatibility level for a specific subject.
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1config~1{subject}/put
+    inputs:
+      - subject
+      - compatibility
+    outputs:
+      - compatibility
+
+  - id: schema-registry.types.list
+    name: List supported schema types
+    description: List the schema types supported by the registry (AVRO, JSON, PROTOBUF).
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1schemas~1types/get
+    inputs: []
+    outputs:
+      - types
+
+  - id: schema-registry.mode.get-global
+    name: Get global mode
+    description: Retrieve the operating mode of the registry (READWRITE, READONLY, IMPORT).
+    api: confluent-schema-registry:schema-registry-rest-api
+    operationRef: openapi/schema-registry.yml#/paths/~1mode/get
+    inputs: []
+    outputs:
+      - mode

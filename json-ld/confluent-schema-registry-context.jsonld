@@ -1,0 +1,103 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schemaregistry": "https://docs.confluent.io/platform/current/schema-registry/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Subject": {
+      "@id": "schemaregistry:Subject",
+      "@context": {
+        "name": "schema:name",
+        "compatibilityLevel": "schemaregistry:compatibilityLevel",
+        "versions": {
+          "@id": "schemaregistry:versions",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Schema": {
+      "@id": "schemaregistry:Schema",
+      "@context": {
+        "id": "schemaregistry:id",
+        "version": "schemaregistry:version",
+        "subject": "schemaregistry:subject",
+        "schemaType": "schemaregistry:schemaType",
+        "schema": "schemaregistry:schema",
+        "references": {
+          "@id": "schemaregistry:references",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "SchemaReference": {
+      "@id": "schemaregistry:SchemaReference",
+      "@context": {
+        "name": "schema:name",
+        "subject": "schemaregistry:subject",
+        "version": "schemaregistry:version"
+      }
+    },
+
+    "Config": {
+      "@id": "schemaregistry:Config",
+      "@context": {
+        "compatibility": "schemaregistry:compatibility",
+        "compatibilityGroup": "schemaregistry:compatibilityGroup",
+        "normalize": "schemaregistry:normalize",
+        "validateFields": "schemaregistry:validateFields"
+      }
+    },
+
+    "Mode": {
+      "@id": "schemaregistry:Mode",
+      "@context": {
+        "mode": "schemaregistry:mode"
+      }
+    },
+
+    "CompatibilityLevel": {
+      "@id": "schemaregistry:CompatibilityLevel",
+      "@type": "@vocab",
+      "@vocab": "schemaregistry:compatibilityLevel#"
+    },
+
+    "SchemaType": {
+      "@id": "schemaregistry:SchemaType",
+      "@type": "@vocab",
+      "@vocab": "schemaregistry:schemaType#"
+    },
+
+    "Context": {
+      "@id": "schemaregistry:Context",
+      "@context": {
+        "name": "schema:name"
+      }
+    },
+
+    "Exporter": {
+      "@id": "schemaregistry:Exporter",
+      "@context": {
+        "name": "schema:name",
+        "subjects": {
+          "@id": "schemaregistry:subjects",
+          "@container": "@set"
+        },
+        "contextType": "schemaregistry:contextType",
+        "context": "schemaregistry:context",
+        "config": "schemaregistry:config"
+      }
+    },
+
+    "ErrorMessage": {
+      "@id": "schemaregistry:ErrorMessage",
+      "@context": {
+        "errorCode": "schemaregistry:errorCode",
+        "message": "schema:description"
+      }
+    }
+  }
+}
