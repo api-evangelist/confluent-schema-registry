@@ -112,6 +112,10 @@ common:
     url: rules/confluent-schema-registry-rules.yml
   - type: Naftiko Capabilities
     url: capabilities/confluent-schema-registry-capabilities.yml
+  - type: Integrations
+    url: https://www.confluent.io/partner/
+integrations:
+  - name: Become a Partner
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
