@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Confluent Schema Registry API — Server
+  description: 'Confluent Schema Registry API — Server. 1 operations. Lead operation: Schema Registry root resource. Self-contained
+    Naftiko capability covering one Confluent Schema Registry business surface.'
+  tags:
+  - Confluent Schema Registry
+  - Server
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CONFLUENT_SCHEMA_REGISTRY_API_KEY: CONFLUENT_SCHEMA_REGISTRY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: schema-registry-server
+    baseUri: http://localhost:8081
+    description: Confluent Schema Registry API — Server business capability. Self-contained, no shared references.
+    resources:
+    - name: root
+      path: /
+      operations:
+      - name: getroot
+        method: GET
+        description: Schema Registry root resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: schema-registry-server-rest
+    port: 8080
+    description: REST adapter for Confluent Schema Registry API — Server. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1
+      name: root
+      description: REST surface for root.
+      operations:
+      - method: GET
+        name: getroot
+        description: Schema Registry root resource
+        call: schema-registry-server.getroot
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: schema-registry-server-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Confluent Schema Registry API — Server. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: schema-registry-root-resource
+      description: Schema Registry root resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-registry-server.getroot
+      outputParameters:
+      - type: object
+        mapping: $.

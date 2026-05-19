@@ -1,0 +1,463 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Confluent Schema Registry API — Subjects
+  description: 'Confluent Schema Registry API — Subjects. 9 operations. Lead operation: List registered subjects. Self-contained
+    Naftiko capability covering one Confluent Schema Registry business surface.'
+  tags:
+  - Confluent Schema Registry
+  - Subjects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CONFLUENT_SCHEMA_REGISTRY_API_KEY: CONFLUENT_SCHEMA_REGISTRY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: schema-registry-subjects
+    baseUri: http://localhost:8081
+    description: Confluent Schema Registry API — Subjects business capability. Self-contained, no shared references.
+    resources:
+    - name: subjects
+      path: /subjects
+      operations:
+      - name: listsubjects
+        method: GET
+        description: List registered subjects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subjectPrefix
+          in: query
+          type: string
+          description: Subject name prefix filter
+        - name: deleted
+          in: query
+          type: boolean
+          description: Include soft-deleted subjects
+    - name: subjects-subject
+      path: /subjects/{subject}
+      operations:
+      - name: lookupschemaundersubject
+        method: POST
+        description: Check if schema is registered under subject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subject
+          in: path
+          type: string
+          required: true
+        - name: normalize
+          in: query
+          type: boolean
+        - name: deleted
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletesubject
+        method: DELETE
+        description: Delete subject and all versions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subject
+          in: path
+          type: string
+          required: true
+        - name: permanent
+          in: query
+          type: boolean
+    - name: subjects-subject-versions
+      path: /subjects/{subject}/versions
+      operations:
+      - name: listversions
+        method: GET
+        description: List versions under subject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subject
+          in: path
+          type: string
+          required: true
+        - name: deleted
+          in: query
+          type: boolean
+      - name: registerschema
+        method: POST
+        description: Register schema under subject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subject
+          in: path
+          type: string
+          required: true
+        - name: normalize
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: subjects-subject-versions-version
+      path: /subjects/{subject}/versions/{version}
+      operations:
+      - name: getschemabyversion
+        method: GET
+        description: Get schema by version
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subject
+          in: path
+          type: string
+          required: true
+        - name: version
+          in: path
+          type: string
+          description: Version number or 'latest'
+          required: true
+        - name: deleted
+          in: query
+          type: boolean
+      - name: deleteschemaversion
+        method: DELETE
+        description: Delete schema version
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subject
+          in: path
+          type: string
+          required: true
+        - name: version
+          in: path
+          type: string
+          required: true
+        - name: permanent
+          in: query
+          type: boolean
+    - name: subjects-subject-versions-version-referencedby
+      path: /subjects/{subject}/versions/{version}/referencedby
+      operations:
+      - name: getreferencedby
+        method: GET
+        description: Get schemas that reference this schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subject
+          in: path
+          type: string
+          required: true
+        - name: version
+          in: path
+          type: string
+          required: true
+    - name: subjects-subject-versions-version-schema
+      path: /subjects/{subject}/versions/{version}/schema
+      operations:
+      - name: getschemaonly
+        method: GET
+        description: Get raw schema by version
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: subject
+          in: path
+          type: string
+          required: true
+        - name: version
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: schema-registry-subjects-rest
+    port: 8080
+    description: REST adapter for Confluent Schema Registry API — Subjects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/subjects
+      name: subjects
+      description: REST surface for subjects.
+      operations:
+      - method: GET
+        name: listsubjects
+        description: List registered subjects
+        call: schema-registry-subjects.listsubjects
+        with:
+          subjectPrefix: rest.subjectPrefix
+          deleted: rest.deleted
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subjects/{subject}
+      name: subjects-subject
+      description: REST surface for subjects-subject.
+      operations:
+      - method: POST
+        name: lookupschemaundersubject
+        description: Check if schema is registered under subject
+        call: schema-registry-subjects.lookupschemaundersubject
+        with:
+          subject: rest.subject
+          normalize: rest.normalize
+          deleted: rest.deleted
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesubject
+        description: Delete subject and all versions
+        call: schema-registry-subjects.deletesubject
+        with:
+          subject: rest.subject
+          permanent: rest.permanent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subjects/{subject}/versions
+      name: subjects-subject-versions
+      description: REST surface for subjects-subject-versions.
+      operations:
+      - method: GET
+        name: listversions
+        description: List versions under subject
+        call: schema-registry-subjects.listversions
+        with:
+          subject: rest.subject
+          deleted: rest.deleted
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: registerschema
+        description: Register schema under subject
+        call: schema-registry-subjects.registerschema
+        with:
+          subject: rest.subject
+          normalize: rest.normalize
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subjects/{subject}/versions/{version}
+      name: subjects-subject-versions-version
+      description: REST surface for subjects-subject-versions-version.
+      operations:
+      - method: GET
+        name: getschemabyversion
+        description: Get schema by version
+        call: schema-registry-subjects.getschemabyversion
+        with:
+          subject: rest.subject
+          version: rest.version
+          deleted: rest.deleted
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteschemaversion
+        description: Delete schema version
+        call: schema-registry-subjects.deleteschemaversion
+        with:
+          subject: rest.subject
+          version: rest.version
+          permanent: rest.permanent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subjects/{subject}/versions/{version}/referencedby
+      name: subjects-subject-versions-version-referencedby
+      description: REST surface for subjects-subject-versions-version-referencedby.
+      operations:
+      - method: GET
+        name: getreferencedby
+        description: Get schemas that reference this schema
+        call: schema-registry-subjects.getreferencedby
+        with:
+          subject: rest.subject
+          version: rest.version
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subjects/{subject}/versions/{version}/schema
+      name: subjects-subject-versions-version-schema
+      description: REST surface for subjects-subject-versions-version-schema.
+      operations:
+      - method: GET
+        name: getschemaonly
+        description: Get raw schema by version
+        call: schema-registry-subjects.getschemaonly
+        with:
+          subject: rest.subject
+          version: rest.version
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: schema-registry-subjects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Confluent Schema Registry API — Subjects. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-registered-subjects
+      description: List registered subjects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-registry-subjects.listsubjects
+      with:
+        subjectPrefix: tools.subjectPrefix
+        deleted: tools.deleted
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-if-schema-is-registered
+      description: Check if schema is registered under subject
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: schema-registry-subjects.lookupschemaundersubject
+      with:
+        subject: tools.subject
+        normalize: tools.normalize
+        deleted: tools.deleted
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-subject-and-all-versions
+      description: Delete subject and all versions
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: schema-registry-subjects.deletesubject
+      with:
+        subject: tools.subject
+        permanent: tools.permanent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-versions-under-subject
+      description: List versions under subject
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-registry-subjects.listversions
+      with:
+        subject: tools.subject
+        deleted: tools.deleted
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: register-schema-under-subject
+      description: Register schema under subject
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: schema-registry-subjects.registerschema
+      with:
+        subject: tools.subject
+        normalize: tools.normalize
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-schema-version
+      description: Get schema by version
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-registry-subjects.getschemabyversion
+      with:
+        subject: tools.subject
+        version: tools.version
+        deleted: tools.deleted
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-schema-version
+      description: Delete schema version
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: schema-registry-subjects.deleteschemaversion
+      with:
+        subject: tools.subject
+        version: tools.version
+        permanent: tools.permanent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-schemas-that-reference-this
+      description: Get schemas that reference this schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-registry-subjects.getreferencedby
+      with:
+        subject: tools.subject
+        version: tools.version
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-raw-schema-version
+      description: Get raw schema by version
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-registry-subjects.getschemaonly
+      with:
+        subject: tools.subject
+        version: tools.version
+      outputParameters:
+      - type: object
+        mapping: $.
