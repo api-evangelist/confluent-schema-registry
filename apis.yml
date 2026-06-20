@@ -10,7 +10,7 @@ description: >-
 type: Index
 position: Provider
 access: Open Source
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/confluent-schema-registry/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-05-19'
@@ -40,7 +40,7 @@ apis:
       type and supports authentication via HTTP Basic, mTLS, or OAuth depending on deployment.
     humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
     baseURL: http://localhost:8081
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Compatibility
       - REST
