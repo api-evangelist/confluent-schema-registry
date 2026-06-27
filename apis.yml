@@ -103,7 +103,7 @@ common:
     url: rules/confluent-schema-registry-rules.yml
   - type: Integrations
     url: https://www.confluent.io/partner/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.confluent.io/llms.txt
 integrations:
   - name: Become a Partner
