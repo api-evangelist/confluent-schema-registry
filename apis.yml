@@ -81,6 +81,13 @@ apis:
       - Migrate schemas between clusters with Schema Linking
       - Govern data contracts in streaming pipelines
 common:
+  - type: VulnerabilityDisclosure
+    url: security/confluent-schema-registry-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/confluent-schema-registry-domain-security.yml
+  - name: Agent Skills
+    url: https://github.com/confluentinc/agent-skills
+    type: AgentSkills
   - type: Website
     url: https://www.confluent.io/
   - type: Documentation
