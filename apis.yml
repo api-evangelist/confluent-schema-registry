@@ -81,6 +81,8 @@ apis:
       - Migrate schemas between clusters with Schema Linking
       - Govern data contracts in streaming pipelines
 common:
+  - type: AgenticAccess
+    url: agentic-access/confluent-schema-registry-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/confluent-schema-registry-vulnerability-disclosure.yml
   - type: DomainSecurity
