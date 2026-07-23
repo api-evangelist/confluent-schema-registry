@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry Compatibility Mode API
+  description: The Confluent Schema Registry provides a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas. It stores a versioned history of all schemas based on a specified subject name strategy, provides multiple compatibility settings, and allows evolution of schemas according to configured compatibility settings.
+  version: 7.6.0
+  contact:
+    name: Confluent
+    url: https://www.confluent.io/
+  license:
+    name: Confluent Community License
+    url: https://www.confluent.io/confluent-community-license/
+servers:
+- url: http://localhost:8081
+  description: Default Schema Registry
+tags:
+- name: Mode
+paths:
+  /mode:
+    get:
+      summary: Get global mode
+      operationId: getTopLevelMode
+      tags:
+      - Mode
+      responses:
+        '200':
+          description: Current mode
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mode:
+                    type: string
+                    enum:
+                    - READWRITE
+                    - READONLY
+                    - READONLY_OVERRIDE
+                    - IMPORT
+    put:
+      summary: Update global mode
+      operationId: updateTopLevelMode
+      tags:
+      - Mode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mode:
+                  type: string
+                  enum:
+                  - READWRITE
+                  - READONLY
+                  - READONLY_OVERRIDE
+                  - IMPORT
+      responses:
+        '200':
+          description: Mode updated

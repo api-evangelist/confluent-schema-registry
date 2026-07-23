@@ -1,0 +1,191 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry Compatibility API
+  description: The Confluent Schema Registry provides a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas. It stores a versioned history of all schemas based on a specified subject name strategy, provides multiple compatibility settings, and allows evolution of schemas according to configured compatibility settings.
+  version: 7.6.0
+  contact:
+    name: Confluent
+    url: https://www.confluent.io/
+  license:
+    name: Confluent Community License
+    url: https://www.confluent.io/confluent-community-license/
+servers:
+- url: http://localhost:8081
+  description: Default Schema Registry
+tags:
+- name: Compatibility
+paths:
+  /config:
+    get:
+      summary: Get global compatibility level
+      operationId: getTopLevelConfig
+      tags:
+      - Compatibility
+      responses:
+        '200':
+          description: Global compatibility level
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    put:
+      summary: Update global compatibility level
+      operationId: updateTopLevelConfig
+      tags:
+      - Compatibility
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Config'
+      responses:
+        '200':
+          description: Updated config
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+  /config/{subject}:
+    get:
+      summary: Get subject-level compatibility
+      operationId: getSubjectLevelConfig
+      tags:
+      - Compatibility
+      parameters:
+      - name: subject
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: defaultToGlobal
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Subject compatibility level
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    put:
+      summary: Update subject-level compatibility
+      operationId: updateSubjectLevelConfig
+      tags:
+      - Compatibility
+      parameters:
+      - name: subject
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Config'
+      responses:
+        '200':
+          description: Updated config
+    delete:
+      summary: Delete subject-level compatibility
+      operationId: deleteSubjectConfig
+      tags:
+      - Compatibility
+      parameters:
+      - name: subject
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Compatibility setting deleted
+  /compatibility/subjects/{subject}/versions/{version}:
+    post:
+      summary: Test schema compatibility
+      operationId: testCompatibility
+      tags:
+      - Compatibility
+      parameters:
+      - name: subject
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: verbose
+        in: query
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterSchemaRequest'
+      responses:
+        '200':
+          description: Compatibility check result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  is_compatible:
+                    type: boolean
+                  messages:
+                    type: array
+                    items:
+                      type: string
+components:
+  schemas:
+    Config:
+      type: object
+      properties:
+        compatibilityLevel:
+          type: string
+          enum:
+          - BACKWARD
+          - BACKWARD_TRANSITIVE
+          - FORWARD
+          - FORWARD_TRANSITIVE
+          - FULL
+          - FULL_TRANSITIVE
+          - NONE
+    RegisterSchemaRequest:
+      type: object
+      required:
+      - schema
+      properties:
+        schema:
+          type: string
+          description: The schema string
+        schemaType:
+          type: string
+          enum:
+          - AVRO
+          - JSON
+          - PROTOBUF
+          default: AVRO
+          description: The schema type
+        references:
+          type: array
+          description: References to other schemas
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              subject:
+                type: string
+              version:
+                type: integer

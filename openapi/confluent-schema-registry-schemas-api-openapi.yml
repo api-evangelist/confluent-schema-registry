@@ -1,0 +1,108 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry Compatibility Schemas API
+  description: The Confluent Schema Registry provides a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas. It stores a versioned history of all schemas based on a specified subject name strategy, provides multiple compatibility settings, and allows evolution of schemas according to configured compatibility settings.
+  version: 7.6.0
+  contact:
+    name: Confluent
+    url: https://www.confluent.io/
+  license:
+    name: Confluent Community License
+    url: https://www.confluent.io/confluent-community-license/
+servers:
+- url: http://localhost:8081
+  description: Default Schema Registry
+tags:
+- name: Schemas
+paths:
+  /schemas/ids/{id}:
+    get:
+      summary: Get schema by global ID
+      operationId: getSchemaById
+      tags:
+      - Schemas
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: subject
+        in: query
+        schema:
+          type: string
+      - name: format
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Schema details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchemaString'
+  /schemas/ids/{id}/versions:
+    get:
+      summary: Get subject-version pairs for schema ID
+      operationId: getVersions
+      tags:
+      - Schemas
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: deleted
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of subject-version pairs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    subject:
+                      type: string
+                    version:
+                      type: integer
+  /schemas/types:
+    get:
+      summary: List supported schema types
+      operationId: getSchemaTypes
+      tags:
+      - Schemas
+      responses:
+        '200':
+          description: List of schema types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  enum:
+                  - AVRO
+                  - JSON
+                  - PROTOBUF
+components:
+  schemas:
+    SchemaString:
+      type: object
+      properties:
+        schema:
+          type: string
+        schemaType:
+          type: string
+        references:
+          type: array
+          items:
+            type: object
+        maxId:
+          type: integer

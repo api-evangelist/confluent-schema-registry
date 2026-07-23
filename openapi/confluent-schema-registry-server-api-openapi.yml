@@ -1,0 +1,30 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry Compatibility Server API
+  description: The Confluent Schema Registry provides a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas. It stores a versioned history of all schemas based on a specified subject name strategy, provides multiple compatibility settings, and allows evolution of schemas according to configured compatibility settings.
+  version: 7.6.0
+  contact:
+    name: Confluent
+    url: https://www.confluent.io/
+  license:
+    name: Confluent Community License
+    url: https://www.confluent.io/confluent-community-license/
+servers:
+- url: http://localhost:8081
+  description: Default Schema Registry
+tags:
+- name: Server
+paths:
+  /:
+    get:
+      summary: Schema Registry root resource
+      operationId: getRoot
+      tags:
+      - Server
+      responses:
+        '200':
+          description: Empty JSON object
+          content:
+            application/json:
+              schema:
+                type: object
