@@ -1,0 +1,22 @@
+{
+  "provider": "confluent-schema-registry",
+  "sources": [
+    "confluent-schema-registry-compatibility-api-openapi.yml",
+    "confluent-schema-registry-mode-api-openapi.yml",
+    "confluent-schema-registry-schemas-api-openapi.yml",
+    "confluent-schema-registry-server-api-openapi.yml",
+    "confluent-schema-registry-subjects-api-openapi.yml"
+  ],
+  "outputs": [
+    "confluent-schema-registry-compatibility-api-openapi.yml",
+    "confluent-schema-registry-mode-api-openapi.yml",
+    "confluent-schema-registry-schemas-api-openapi.yml",
+    "confluent-schema-registry-server-api-openapi.yml",
+    "confluent-schema-registry-subjects-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
