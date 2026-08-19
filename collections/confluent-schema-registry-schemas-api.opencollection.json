@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility Schemas API",
+    "version": "7.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get schema by global ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/schemas/ids/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subject",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get schema by global ID"
+        },
+        {
+          "info": {
+            "name": "Get subject-version pairs for schema ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/schemas/ids/:id/versions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get subject-version pairs for schema ID"
+        },
+        {
+          "info": {
+            "name": "List supported schema types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/schemas/types"
+          },
+          "docs": "List supported schema types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

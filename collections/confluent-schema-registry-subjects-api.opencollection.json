@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility Subjects API",
+    "version": "7.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subjects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List registered subjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/subjects",
+            "params": [
+              {
+                "name": "subjectPrefix",
+                "value": "",
+                "type": "query",
+                "description": "Subject name prefix filter"
+              },
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query",
+                "description": "Include soft-deleted subjects"
+              }
+            ]
+          },
+          "docs": "List registered subjects"
+        },
+        {
+          "info": {
+            "name": "List versions under subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/subjects/:subject/versions",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List versions under subject"
+        },
+        {
+          "info": {
+            "name": "Register schema under subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8081/subjects/:subject/versions",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "normalize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register schema under subject"
+        },
+        {
+          "info": {
+            "name": "Get schema by version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Version number or 'latest'"
+              },
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get schema by version"
+        },
+        {
+          "info": {
+            "name": "Delete schema version",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8081/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "permanent",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete schema version"
+        },
+        {
+          "info": {
+            "name": "Get raw schema by version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/subjects/:subject/versions/:version/schema",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get raw schema by version"
+        },
+        {
+          "info": {
+            "name": "Get schemas that reference this schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/subjects/:subject/versions/:version/referencedby",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get schemas that reference this schema"
+        },
+        {
+          "info": {
+            "name": "Check if schema is registered under subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8081/subjects/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "normalize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check if schema is registered under subject"
+        },
+        {
+          "info": {
+            "name": "Delete subject and all versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8081/subjects/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "permanent",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete subject and all versions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility Mode API",
+    "version": "7.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/mode"
+          },
+          "docs": "Get global mode"
+        },
+        {
+          "info": {
+            "name": "Update global mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8081/mode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update global mode"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

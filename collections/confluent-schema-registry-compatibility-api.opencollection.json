@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility API",
+    "version": "7.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compatibility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global compatibility level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/config"
+          },
+          "docs": "Get global compatibility level"
+        },
+        {
+          "info": {
+            "name": "Update global compatibility level",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8081/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update global compatibility level"
+        },
+        {
+          "info": {
+            "name": "Get subject-level compatibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "defaultToGlobal",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get subject-level compatibility"
+        },
+        {
+          "info": {
+            "name": "Update subject-level compatibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8081/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update subject-level compatibility"
+        },
+        {
+          "info": {
+            "name": "Delete subject-level compatibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8081/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete subject-level compatibility"
+        },
+        {
+          "info": {
+            "name": "Test schema compatibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8081/compatibility/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Test schema compatibility"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
