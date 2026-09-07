@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Confluent Schema Registry Compatibility API
   description: The Confluent Schema Registry provides a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas. It stores a versioned history of all schemas based on a specified subject name strategy, provides multiple compatibility settings, and allows evolution of schemas according to configured compatibility settings.
@@ -148,19 +148,6 @@ paths:
                       type: string
 components:
   schemas:
-    Config:
-      type: object
-      properties:
-        compatibilityLevel:
-          type: string
-          enum:
-          - BACKWARD
-          - BACKWARD_TRANSITIVE
-          - FORWARD
-          - FORWARD_TRANSITIVE
-          - FULL
-          - FULL_TRANSITIVE
-          - NONE
     RegisterSchemaRequest:
       type: object
       required:
@@ -189,3 +176,16 @@ components:
                 type: string
               version:
                 type: integer
+    Config:
+      type: object
+      properties:
+        compatibilityLevel:
+          type: string
+          enum:
+          - BACKWARD
+          - BACKWARD_TRANSITIVE
+          - FORWARD
+          - FORWARD_TRANSITIVE
+          - FULL
+          - FULL_TRANSITIVE
+          - NONE
