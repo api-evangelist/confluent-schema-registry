@@ -113,6 +113,8 @@ apis:
   humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
   baseURL: http://localhost:8081
   tags:
+  - Schema
+  tags_raw:
   - Schemas
   properties:
   - type: OpenAPI
@@ -133,6 +135,8 @@ apis:
   humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
   baseURL: http://localhost:8081
   tags:
+  - Servers
+  tags_raw:
   - Server
   properties:
   - type: OpenAPI
