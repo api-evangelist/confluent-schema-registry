@@ -1,11 +1,7 @@
 {
   "provider": "confluent-schema-registry",
   "sources": [
-    "confluent-schema-registry-compatibility-api-openapi.yml",
-    "confluent-schema-registry-mode-api-openapi.yml",
-    "confluent-schema-registry-schemas-api-openapi.yml",
-    "confluent-schema-registry-server-api-openapi.yml",
-    "confluent-schema-registry-subjects-api-openapi.yml"
+    "_original/schema-registry.yml"
   ],
   "outputs": [
     "confluent-schema-registry-compatibility-api-openapi.yml",
@@ -18,12 +14,20 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "confluent-schema-registry-compatibility-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "confluent-schema-registry-mode-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "confluent-schema-registry-schemas-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "confluent-schema-registry-server-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "confluent-schema-registry-subjects-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "schema-registry.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "schema-registry.yml: declared missing tag: Compatibility",
+    "schema-registry.yml: declared missing tag: Mode",
+    "schema-registry.yml: declared missing tag: Schemas",
+    "schema-registry.yml: declared missing tag: Server",
+    "schema-registry.yml: declared missing tag: Subjects",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "confluent-schema-registry-compatibility-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "confluent-schema-registry-mode-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "confluent-schema-registry-schemas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "confluent-schema-registry-server-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "confluent-schema-registry-subjects-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
