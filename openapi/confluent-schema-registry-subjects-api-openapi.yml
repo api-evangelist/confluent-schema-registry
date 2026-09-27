@@ -300,41 +300,6 @@ paths:
                   type: integer
 components:
   schemas:
-    RegisterSchemaRequest:
-      type: object
-      required:
-      - schema
-      properties:
-        schema:
-          type: string
-          description: The schema string
-        schemaType:
-          type: string
-          enum:
-          - AVRO
-          - JSON
-          - PROTOBUF
-          default: AVRO
-          description: The schema type
-        references:
-          type: array
-          description: References to other schemas
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              subject:
-                type: string
-              version:
-                type: integer
-    ErrorMessage:
-      type: object
-      properties:
-        error_code:
-          type: integer
-        message:
-          type: string
     Schema:
       type: object
       properties:
@@ -356,6 +321,41 @@ components:
           description: The schema definition string
         references:
           type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              subject:
+                type: string
+              version:
+                type: integer
+    ErrorMessage:
+      type: object
+      properties:
+        error_code:
+          type: integer
+        message:
+          type: string
+    RegisterSchemaRequest:
+      type: object
+      required:
+      - schema
+      properties:
+        schema:
+          type: string
+          description: The schema string
+        schemaType:
+          type: string
+          enum:
+          - AVRO
+          - JSON
+          - PROTOBUF
+          default: AVRO
+          description: The schema type
+        references:
+          type: array
+          description: References to other schemas
           items:
             type: object
             properties:

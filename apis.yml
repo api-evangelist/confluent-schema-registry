@@ -10,15 +10,19 @@ description: >-
 type: Index
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - confluentinc/schema-registry
+  open_source: unknown
   commercial: true
   callable_host: false
   label: Hosted service · you call their endpoint
-  confidence: medium
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -40,6 +44,9 @@ created: '2026-03-26'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 kind: opensource
+x-docs-platform: sphinx
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-24
 tags:
   - Apache Kafka
   - Avro
@@ -47,8 +54,8 @@ tags:
   - Confluent
   - Data Governance
   - Data Streaming
-  - JSON-Schema
-  - Open-Source
+  - JSON Schema
+  - Open Source
   - Protobuf
   - REST
   - Schema Evolution
@@ -66,6 +73,8 @@ tags_raw:
   - REST
   - Schema Evolution
   - Schema Registry
+  - JSON-Schema
+  - Open-Source
 apis:
 - aid: confluent-schema-registry:confluent-schema-registry-compatibility-api
   name: Confluent Schema Registry Compatibility API
