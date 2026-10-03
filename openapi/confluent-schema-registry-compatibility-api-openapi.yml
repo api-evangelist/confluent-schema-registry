@@ -148,19 +148,6 @@ paths:
                       type: string
 components:
   schemas:
-    Config:
-      type: object
-      properties:
-        compatibilityLevel:
-          type: string
-          enum:
-          - BACKWARD
-          - BACKWARD_TRANSITIVE
-          - FORWARD
-          - FORWARD_TRANSITIVE
-          - FULL
-          - FULL_TRANSITIVE
-          - NONE
     RegisterSchemaRequest:
       type: object
       required:
@@ -189,3 +176,16 @@ components:
                 type: string
               version:
                 type: integer
+    Config:
+      type: object
+      properties:
+        compatibilityLevel:
+          type: string
+          enum:
+          - BACKWARD
+          - BACKWARD_TRANSITIVE
+          - FORWARD
+          - FORWARD_TRANSITIVE
+          - FULL
+          - FULL_TRANSITIVE
+          - NONE
