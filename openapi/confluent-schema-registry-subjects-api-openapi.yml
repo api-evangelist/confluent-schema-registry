@@ -328,13 +328,6 @@ components:
                 type: string
               version:
                 type: integer
-    ErrorMessage:
-      type: object
-      properties:
-        error_code:
-          type: integer
-        message:
-          type: string
     Schema:
       type: object
       properties:
@@ -365,3 +358,10 @@ components:
                 type: string
               version:
                 type: integer
+    ErrorMessage:
+      type: object
+      properties:
+        error_code:
+          type: integer
+        message:
+          type: string
