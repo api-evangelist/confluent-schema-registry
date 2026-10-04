@@ -1,0 +1,46 @@
+slug: confluent-schema-registry
+provider: Confluent Schema Registry
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Subjects
+  spec_file: confluent-schema-registry-subjects-api-openapi.yml
+  capability_id: BC-610
+  capability_id_l1: BC-610
+  capability_name: Information & Data Management
+  confidence: 0.75
+  evidence: POST /subjects/{subject}/versions  registerSchema  Register schema under subject
+  reason: Registering, versioning, looking up and deleting data schemas under subjects is the core data-schema
+    registry surface — stewardship of data definitions, i.e. Information & Data Management. L2 left null
+    as evidence does not distinguish governance from data architecture.
+- tag: Compatibility
+  spec_file: confluent-schema-registry-compatibility-api-openapi.yml
+  capability_id: BC-610
+  capability_id_l1: BC-610
+  capability_name: Information & Data Management
+  confidence: 0.7
+  evidence: GET /config  getTopLevelConfig  Get global compatibility level; POST /compatibility/subjects/{subject}/versions/{version}  testCompatibility  Test
+    schema compatibility
+  reason: Setting and testing compatibility levels governs how data schemas may evolve in Kafka pipelines
+    — a data governance/architecture control over information assets. Split between Data Governance (.10)
+    and Data Architecture (.40) so no L2 asserted.
+- tag: Schemas
+  spec_file: confluent-schema-registry-schemas-api-openapi.yml
+  capability_id: BC-610
+  capability_id_l1: BC-610
+  capability_name: Information & Data Management
+  confidence: 0.7
+  evidence: 'GET /schemas/ids/{id}  getSchemaById  Get schema by global ID; schemas: SchemaString'
+  reason: Retrieval of registered Avro/JSON/Protobuf data schemas by ID is management of the organisation's
+    data schema metadata, i.e. Information & Data Management. Specific L2 (governance vs architecture)
+    is not named by the operations.

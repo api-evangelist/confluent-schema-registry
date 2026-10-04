@@ -181,6 +181,9 @@ apis:
   - type: GitHub
     url: https://github.com/confluentinc/schema-registry
 common:
+  - type: CapabilityMap
+    url: capabilities/confluent-schema-registry-capability-edges.yml
+    name: Confluent Schema Registry Business Capability Map
   - type: AgenticAccess
     url: agentic-access/confluent-schema-registry-agentic-access.yml
   - type: VulnerabilityDisclosure
