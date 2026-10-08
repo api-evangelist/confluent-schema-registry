@@ -181,6 +181,12 @@ apis:
   - type: GitHub
     url: https://github.com/confluentinc/schema-registry
 common:
+  - type: Plans
+    url: plans/confluent-schema-registry-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/confluent-schema-registry-rate-limits.yml
+  - type: FinOps
+    url: finops/confluent-schema-registry-finops.yml
   - type: CapabilityMap
     url: capabilities/confluent-schema-registry-capability-edges.yml
     name: Confluent Schema Registry Business Capability Map
