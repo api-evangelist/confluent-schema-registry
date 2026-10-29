@@ -1,4 +1,4 @@
-# Confluent Schema Registry (confluent-schema-registry)
+# Confluent Schema Registry
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,77 +66,162 @@
 
 Confluent Schema Registry is the open-source serving layer for schema metadata used in Apache Kafka data pipelines. It exposes a RESTful interface for storing and retrieving Avro, JSON Schema, and Protobuf schemas, manages schema evolution through configurable compatibility rules (BACKWARD, FORWARD, FULL, and transitive variants), supports schema references and contexts, and integrates with Kafka producers and consumers via shipped serializers and deserializers. Schema Registry is distributed under the Confluent Community License and is a core component of both Confluent Platform and Confluent Cloud.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/confluent-schema-registry/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/confluent-schema-registry/refs/heads/main/apis.yml)
+**Areas:** Apache Kafka · Avro · Compatibility · Confluent · Data Governance · Data Streaming · JSON Schema · Open Source · Protobuf · REST · Schema Evolution · Schema Registry
 
-## Scope
+## Confluent Schema Registry on APIs.io
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** Open Source
+Everything profiled for Confluent Schema Registry is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/confluent-schema-registry/](https://apis.io/providers/confluent-schema-registry/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Apache Kafka
-- Avro
-- Compatibility
-- Confluent
-- Data Governance
-- Data Streaming
-- JSON Schema
-- Open Source
-- Protobuf
-- REST
-- Schema Evolution
-- Schema Registry
+- [Confluent Schema Registry Compatibility API](https://apis.io/apis/confluent-schema-registry/confluent-schema-registry-compatibility-api/) — The Compatibility API from Confluent Schema Registry — 3 operation(s) for compatibility.
+- [Confluent Schema Registry Mode API](https://apis.io/apis/confluent-schema-registry/confluent-schema-registry-mode-api/) — The Mode API from Confluent Schema Registry — 1 operation(s) for mode.
+- [Confluent Schema Registry Schemas API](https://apis.io/apis/confluent-schema-registry/confluent-schema-registry-schemas-api/) — The Schemas API from Confluent Schema Registry — 3 operation(s) for schemas.
+- [Confluent Schema Registry Server API](https://apis.io/apis/confluent-schema-registry/confluent-schema-registry-server-api/) — The Server API from Confluent Schema Registry — 1 operation(s) for server.
+- [Confluent Schema Registry Subjects API](https://apis.io/apis/confluent-schema-registry/confluent-schema-registry-subjects-api/) — The Subjects API from Confluent Schema Registry — 6 operation(s) for subjects.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agent skills (12)
 
-### Confluent Schema Registry REST API
+Agent skills built on the API.
 
-The Confluent Schema Registry REST API provides programmatic management of schemas, subjects, schema versions, schema references, compatibility modes, and operating mode. Producers and consumers use it to register and look up Avro, JSON Schema, and Protobuf schemas, while platform teams use it to enforce schema evolution policies through subject- and cluster-level compatibility settings. The API uses the application/vnd.schemaregistry.v1+json content type and supports authentication via HTTP Basic, mTLS, or OAuth depending on deployment.
+- [Bad_Frontmatter](https://apis.io/agent-skills/confluent-schema-registry/bad-frontmatter/)
+- [confluent-cloud-cdc-tableflow](https://apis.io/agent-skills/confluent-schema-registry/confluent-cloud-cdc-tableflow/)
+- [confluent-skill-creator](https://apis.io/agent-skills/confluent-schema-registry/confluent-skill-creator/)
+- [confluent-skill-reviewer](https://apis.io/agent-skills/confluent-schema-registry/confluent-skill-reviewer/)
+- [developing-kafka-python-client](https://apis.io/agent-skills/confluent-schema-registry/developing-kafka-python-client/)
+- [flink-udf](https://apis.io/agent-skills/confluent-schema-registry/flink-udf/)
+- [good-skill](https://apis.io/agent-skills/confluent-schema-registry/good-skill/)
+- [inlined-refs](https://apis.io/agent-skills/confluent-schema-registry/inlined-refs/)
+- [kafka-schema-registry](https://apis.io/agent-skills/confluent-schema-registry/kafka-schema-registry/)
+- [kafka-streams-programming](https://apis.io/agent-skills/confluent-schema-registry/kafka-streams-programming/)
+- [stale-expectations](https://apis.io/agent-skills/confluent-schema-registry/stale-expectations/)
+- [trigger-overlap](https://apis.io/agent-skills/confluent-schema-registry/trigger-overlap/)
 
-- **Human URL:** [https://docs.confluent.io/platform/current/schema-registry/develop/api.html](https://docs.confluent.io/platform/current/schema-registry/develop/api.html)
-- **Base URL:** `http://localhost:8081`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Compatibility
-- REST
-- Schemas
-- Subjects
+- [Confluent Schema Registry Agentic Access](https://apis.io/agentic-access/confluent-schema-registry/confluent-schema-registry-agentic-access/)
 
-#### Properties
+#### JSON Schema (1)
 
-- [Documentation](https://docs.confluent.io/platform/current/schema-registry/develop/api.html)
-- [OpenAPI](openapi/schema-registry.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/schema-registry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/schema-registry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/schema-registry-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/confluent-schema-registry-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/confluent-schema-registry-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
-- [Git Hub](https://github.com/confluentinc/schema-registry)
+The data models the API reads and writes.
 
-## Common Properties
+- [Confluent Schema Registry Schema](https://apis.io/schemas/confluent-schema-registry/schema-registry/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Confluent Schema Registry Context](https://apis.io/jsonld/confluent-schema-registry/confluent-schema-registry-context/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Confluent Schema Registry Compatibility API](https://apis.io/collections/confluent-schema-registry/open-confluent-schema-registry-compatibility-api/)
+- [Confluent Schema Registry Compatibility Mode API](https://apis.io/collections/confluent-schema-registry/open-confluent-schema-registry-mode-api/)
+- [Confluent Schema Registry Compatibility Schemas API](https://apis.io/collections/confluent-schema-registry/open-confluent-schema-registry-schemas-api/)
+- [Confluent Schema Registry Compatibility Server API](https://apis.io/collections/confluent-schema-registry/open-confluent-schema-registry-server-api/)
+- [Confluent Schema Registry Compatibility Subjects API](https://apis.io/collections/confluent-schema-registry/open-confluent-schema-registry-subjects-api/)
+- [Confluent Schema Registry API](https://apis.io/collections/confluent-schema-registry/open-schema-registry/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Confluent Schema Registry — jsonschema rules](https://apis.io/rules/confluent-schema-registry/confluent-schema-registry-jsonschema-spectral-rules/)
+- [Confluent Schema Registry API Rules](https://apis.io/rules/confluent-schema-registry/confluent-schema-registry-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Confluent Schema Registry Domain Security](https://apis.io/security/confluent-schema-registry/confluent-schema-registry-domain-security/)
+- [Confluent Schema Registry Vulnerability Disclosure](https://apis.io/security/confluent-schema-registry/confluent-schema-registry-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Confluent Schema Registry Plans Pricing](https://apis.io/plans/confluent-schema-registry/confluent-schema-registry-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Confluent Schema Registry Rate Limits](https://apis.io/rate-limits/confluent-schema-registry/confluent-schema-registry-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Confluent Schema Registry Finops](https://apis.io/finops/confluent-schema-registry/confluent-schema-registry-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.confluent.io/)
 - [Documentation](https://docs.confluent.io/platform/current/schema-registry/)
-- [Getting Started](https://docs.confluent.io/platform/current/schema-registry/develop/using.html)
-- [API Reference](https://docs.confluent.io/platform/current/schema-registry/develop/api.html)
-- [Git Hub](https://github.com/confluentinc/schema-registry)
-- [License](https://www.confluent.io/confluent-community-license/)
-- [Blog](https://www.confluent.io/blog/)
+- [Getting started](https://docs.confluent.io/platform/current/schema-registry/develop/using.html)
+- [API reference](https://docs.confluent.io/platform/current/schema-registry/develop/api.html)
 - [Pricing](https://www.confluent.io/pricing/)
-- [JSON-LD](json-ld/confluent-schema-registry-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/confluent-schema-registry-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
-- [Integrations](https://www.confluent.io/partner/)
-- [L L Ms Txt](https://docs.confluent.io/llms.txt)
+- [Blog](https://www.confluent.io/blog/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 31.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 45.7 |
+| Contract governance | 13.6 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 37.4 |
+| Access clarity | 18.4 |
+
+**Agent readiness 24.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/confluent-schema-registry/](https://apis.io/providers/confluent-schema-registry/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Confluent Schema Registry: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/confluent-schema-registry/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
